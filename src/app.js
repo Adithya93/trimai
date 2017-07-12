@@ -46,7 +46,7 @@ class MessageBox extends Component {
 		let messages;
 		let text = BOT_PREFIX + msgJson['text'];
 		if (msgJson['type'] === 'text') {
-			messages = this.state.messages.concat([<Message text={text} />]);
+			messages = this.state.messages.concat([<BotMessage text={text}/>]);
 		}
 		else if (msgJson['type'] === 'button') {
 			messages = this.state.messages.concat([<ButtonMessage text={text} options={msgJson['options']} clickHandler={this._postBack} />])
@@ -121,7 +121,21 @@ class Message extends Component {
 
 	render() {
 		return (
-			<li>
+			<li className="user">
+				{this.props.text}
+			</li>
+		);
+	}
+}
+
+class BotMessage extends Component {
+	constructor() {
+		super();
+	}
+
+	render() {
+		return (
+			<li className="bot">
 				{this.props.text}
 			</li>
 		);
@@ -136,7 +150,7 @@ class ButtonMessage extends Component {
 
 	render() {
 		return (
-			<li>
+			<li className="bot">
 				<div>
 					{this.props.text}
 				</div>
@@ -165,7 +179,7 @@ class PictureMessage extends Component {
 		let width_percentage = parseInt(MAX_WIDTH_PERCENTAGE / this.props.urls.length) + "%";
 		width_percentage = width_percentage > MAX_SINGLE_WIDTH_PERCENTAGE ? MAX_SINGLE_WIDTH_PERCENTAGE : width_percentage;
 		return (
-			<li>
+			<li className="bot">
 				<div>
 					{this.props.text}
 				</div>

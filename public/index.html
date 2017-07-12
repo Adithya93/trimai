@@ -1,8 +1,9 @@
 
 <!doctype html>
 <html>
-  <head>
-    <title>Socket.IO chat</title>
+  <head profile="http://www.w3.org/2005/10/profile">
+    <title>TrimAI Chatbot</title>
+    <link rel="icon" type="image/png" href="./logo.png">
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,11 +13,18 @@
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+      #messages li.bot { color: cyan; }
+      #messages li.user { color: white; text-align: right}
       #messages { margin-bottom: 40px }
     </style>
   </head>
-  <body id="target">
+  <body background="./backgroundImagePlain.jpg" style="background-size:cover;">
+    <center>
+      <button style="background-color:orange;">
+        <a href="https://trim-ai.com/" style="text-align:center;">Curious about TrimAI?</a>
+      </button>
+    </center>
+    <div id="target" height="90%"></div>
     <script src="./bundle.js"></script>
   </body>
 </html>
